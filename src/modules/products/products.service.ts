@@ -13,8 +13,9 @@ export class ProductsService {
     private productModel: Model<Product>,
   ) {}
 
-  create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+  async create(createProductDto: CreateProductDto) {
+    const product = new this.productModel(createProductDto);
+    return product.save();
   }
 
   findAll() {
